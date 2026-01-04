@@ -56,6 +56,7 @@ export function Footer() {
                     </div>
 
                     {/* Contact */}
+                    {/* Contact - Adjusted to allow 4 columns layout if needed, or keeping 3 columns and merging/refining */}
                     <div>
                         <h4 className="font-semibold mb-4">Contactos</h4>
                         <div className="space-y-3">
@@ -78,6 +79,22 @@ export function Footer() {
                                 <span>R. Doutor Eusébio Leão, Nº89 R/C<br />6040-120 Gavião</span>
                             </div>
                         </div>
+
+                        {/* Legal Links (Added below contacts or could be a separate column, placing here for 3-col layout compatibility) */}
+                        <div className="mt-8 pt-4 border-t border-white/10">
+                            <h4 className="font-semibold mb-3 text-sm">Informação Legal</h4>
+                            <div className="flex flex-col space-y-2">
+                                <Link href="/termos" className="text-white/50 hover:text-primary transition-colors text-xs">
+                                    Termos e Condições
+                                </Link>
+                                <Link href="/privacidade" className="text-white/50 hover:text-primary transition-colors text-xs">
+                                    Política de Privacidade
+                                </Link>
+                                <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-primary transition-colors text-xs">
+                                    Livro de Reclamações
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -89,7 +106,7 @@ export function Footer() {
                     <p className="text-white/50 text-xs">
                         Desenvolvido por{" "}
                         <a
-                            href="https://lopes2.tech"
+                            href="https://www.lopes2tech.ch/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hover:text-primary transition-colors"
