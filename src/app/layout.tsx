@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://alenteseguros.pt'),
   title: "AlenteSeguros | Mediação de Seguros em Gavião",
   description: "Mediação de seguros eficiente e confiável no Alentejo. Seguros de habitação, automóvel, saúde e vida. Atendimento personalizado em Gavião, Portugal.",
   keywords: ["seguros", "mediação de seguros", "Gavião", "Alentejo", "Portugal", "habitação", "automóvel", "saúde", "vida"],
@@ -20,11 +21,23 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AlenteSeguros | Mediação de Seguros em Gavião",
     description: "Mediação de seguros eficiente e confiável no Alentejo. Atendimento personalizado.",
+    url: "https://alenteseguros.pt",
+    siteName: "AlenteSeguros",
     type: "website",
     locale: "pt_PT",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "AlenteSeguros | Mediação de Seguros em Gavião",
+    description: "Mediação de seguros eficiente e confiável no Alentejo. Atendimento personalizado.",
+  },
   icons: {
     icon: "/logo.svg",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+  alternates: {
+    canonical: "https://alenteseguros.pt",
   },
 };
 
