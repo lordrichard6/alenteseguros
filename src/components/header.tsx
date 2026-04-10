@@ -83,32 +83,19 @@ export function Header() {
                 <div className="container mx-auto px-4">
                     <div className="flex items-center justify-between h-20 md:h-24">
 
-                        {/* Logo — crossfade between white and coloured versions */}
+                        {/* Logo — single file, CSS filter swaps colour */}
                         <Link href="/" className="flex items-center shrink-0">
-                            <div className="relative w-40 md:w-48 h-9 md:h-10">
-                                {/* Coloured logo (scrolled / non-home) */}
-                                <Image
-                                    src="/logo_full.svg"
-                                    alt="AlenteSeguros"
-                                    fill
-                                    className={[
-                                        "object-contain object-left transition-opacity duration-400",
-                                        isTransparent ? "opacity-0" : "opacity-100",
-                                    ].join(" ")}
-                                    priority
-                                />
-                                {/* White logo (transparent state) */}
-                                <Image
-                                    src="/logo_full_white.svg"
-                                    alt="AlenteSeguros"
-                                    fill
-                                    className={[
-                                        "object-contain object-left transition-opacity duration-400",
-                                        isTransparent ? "opacity-100" : "opacity-0",
-                                    ].join(" ")}
-                                    priority
-                                />
-                            </div>
+                            <Image
+                                src="/logo_full.svg"
+                                alt="AlenteSeguros"
+                                width={200}
+                                height={48}
+                                className={[
+                                    "h-9 md:h-10 w-auto object-contain transition-all duration-400",
+                                    isTransparent ? "brightness-0 invert" : "",
+                                ].join(" ")}
+                                priority
+                            />
                         </Link>
 
                         {/* Desktop navigation */}
@@ -223,11 +210,11 @@ export function Header() {
                         {/* Top bar */}
                         <div className="relative flex items-center justify-between px-6 pt-7 pb-4">
                             <Image
-                                src="/logo_full_white.svg"
+                                src="/logo_full.svg"
                                 alt="AlenteSeguros"
                                 width={160}
                                 height={38}
-                                className="h-9 w-auto object-contain"
+                                className="h-9 w-auto object-contain brightness-0 invert"
                             />
                             <motion.button
                                 initial={{ opacity: 0, rotate: -90 }}
