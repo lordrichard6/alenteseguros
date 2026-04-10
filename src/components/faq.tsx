@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
-const VP = { once: true, margin: "0px 0px -80px 0px" };
+const VP   = { once: true, margin: "0px 0px -80px 0px" };
 
 const faqs = [
     {
@@ -43,6 +43,36 @@ const faqs = [
         answer:
             "Embora o nosso escritório esteja em Gavião, prestamos serviço a clientes em toda a região do Alentejo e arredores. Muitas questões podem ser tratadas por telefone, email ou WhatsApp, sem necessidade de deslocação.",
     },
+    {
+        question: "Posso transferir o meu seguro actual para a AlenteSeguros?",
+        answer:
+            "Sim. A transferência é simples e sem complicações. Basta contactar-nos com os dados do seu seguro actual — analisamos as condições vigentes, comparamos com as melhores alternativas do mercado e, se encontrarmos uma solução mais vantajosa, tratamos de todo o processo de transferência, incluindo o cancelamento do contrato anterior.",
+    },
+    {
+        question: "Como devo proceder imediatamente após um sinistro?",
+        answer:
+            "Em primeiro lugar, garanta a segurança de todos os envolvidos e, se necessário, contacte as autoridades. De seguida, recolha o máximo de informação possível — fotografias, dados dos intervenientes e testemunhas. Depois, contacte-nos directamente: orientamos o processo de participação junto da seguradora e acompanhamos o sinistro até à sua resolução.",
+    },
+    {
+        question: "Quanto tempo demora a obter uma proposta?",
+        answer:
+            "Na maioria dos casos, conseguimos apresentar propostas em menos de 24 horas após receber os dados necessários. Para seguros mais complexos — como seguros de vida com capitais elevados ou frota automóvel — o prazo pode ser ligeiramente superior, mas mantemo-lo sempre informado sobre o estado da análise.",
+    },
+    {
+        question: "Como funciona a renovação do seguro?",
+        answer:
+            "Acompanhamos activamente as datas de renovação dos contratos dos nossos clientes. Antes de cada renovação, reavaliamos as condições do mercado e verificamos se existem soluções mais competitivas. Se sim, apresentamos-lhas com antecedência suficiente para decidir com calma. O objectivo é garantir que nunca paga mais do que o necessário.",
+    },
+    {
+        question: "É necessário reunir presencialmente para contratar?",
+        answer:
+            "Não é obrigatório. A grande maioria dos processos pode ser concluída à distância — por telefone, email ou WhatsApp. Para quem prefira um atendimento presencial, recebemos no nosso escritório em Gavião com marcação prévia. Adaptamo-nos à preferência e disponibilidade de cada cliente.",
+    },
+    {
+        question: "A AlenteSeguros está registada na autoridade competente?",
+        answer:
+            "Sim. A AlenteSeguros actua em conformidade com a legislação portuguesa em vigor e opera através dos nossos parceiros HPR e SABSEG, devidamente registados junto da Autoridade de Supervisão de Seguros e Fundos de Pensões (ASF). Pode consultar o registo de mediadores no portal oficial da ASF.",
+    },
 ];
 
 function FaqItem({
@@ -51,10 +81,11 @@ function FaqItem({
     index,
 }: {
     question: string;
-    answer: string;
-    index: number;
+    answer:   string;
+    index:    number;
 }) {
     const [isOpen, setIsOpen] = useState(false);
+    const panelId = `faq-answer-${index}`;
 
     return (
         <motion.div
@@ -65,45 +96,61 @@ function FaqItem({
             className={[
                 "border rounded-2xl overflow-hidden bg-white transition-all duration-300",
                 isOpen
-                    ? "border-primary/40 shadow-md"
+                    ? "border-primary/40 shadow-md shadow-primary/[0.06]"
                     : "border-border/40 hover:border-primary/20",
             ].join(" ")}
         >
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full flex items-center justify-between gap-4 p-6 text-left"
                 aria-expanded={isOpen}
+                aria-controls={panelId}
+                className="w-full flex items-center justify-between gap-4 p-6 text-left"
             >
-                <span className="font-semibold text-foreground text-sm md:text-base leading-snug pr-2">
-                    {question}
-                </span>
+                {/* Numeral + question */}
+                <div className="flex items-baseline gap-4 min-w-0">
+                    <span
+                        aria-hidden="true"
+                        className="text-[11px] font-bold tracking-wider text-foreground/20 shrink-0 tabular-nums"
+                    >
+                        {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-semibold text-foreground text-sm md:text-base leading-snug">
+                        {question}
+                    </span>
+                </div>
+
+                {/* Rotating chevron */}
                 <div
                     className={[
-                        "w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300",
+                        "w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300",
                         isOpen
-                            ? "bg-primary text-white rotate-0"
+                            ? "bg-primary text-white"
                             : "bg-muted text-muted-foreground",
                     ].join(" ")}
                 >
-                    {isOpen ? (
-                        <Minus className="w-4 h-4" />
-                    ) : (
-                        <Plus className="w-4 h-4" />
-                    )}
+                    <motion.div
+                        animate={{ rotate: isOpen ? 180 : 0 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    >
+                        <ChevronDown className="w-4 h-4" />
+                    </motion.div>
                 </div>
             </button>
 
             <AnimatePresence initial={false}>
                 {isOpen && (
                     <motion.div
+                        id={panelId}
                         key="content"
+                        role="region"
+                        aria-label={question}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: EASE }}
                         className="overflow-hidden"
                     >
-                        <p className="px-6 pb-6 text-muted-foreground text-sm leading-relaxed border-t border-border/30 pt-4">
+                        <p className="px-6 pb-6 text-muted-foreground text-sm leading-relaxed pl-[calc(1.5rem+2.25rem)]">
                             {answer}
                         </p>
                     </motion.div>
@@ -115,37 +162,9 @@ function FaqItem({
 
 export function Faq() {
     return (
-        <section className="py-24 md:py-32 bg-white overflow-hidden">
+        <section className="py-20 md:py-28 bg-surface overflow-hidden">
             <div className="container mx-auto px-4">
                 <div className="max-w-3xl mx-auto">
-
-                    {/* Section Header */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
-                        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                        viewport={VP}
-                        transition={{ duration: 0.6, ease: EASE }}
-                        className="text-center mb-12"
-                    >
-                        <p className="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-4">
-                            Dúvidas frequentes
-                        </p>
-                        <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-5">
-                            Perguntas Frequentes
-                        </h2>
-                        <p className="text-muted-foreground leading-relaxed">
-                            Esclarecemos as dúvidas mais comuns sobre mediação de seguros.
-                            Não encontra a sua resposta?{" "}
-                            <a
-                                href="/contacto"
-                                className="text-primary font-semibold hover:underline underline-offset-4"
-                            >
-                                Contacte-nos.
-                            </a>
-                        </p>
-                    </motion.div>
-
-                    {/* FAQ accordion */}
                     <div className="space-y-3">
                         {faqs.map((faq, index) => (
                             <FaqItem key={faq.question} {...faq} index={index} />

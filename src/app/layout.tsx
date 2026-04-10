@@ -9,6 +9,7 @@ const playfair = Playfair_Display({
     subsets: ["latin"],
     display: "swap",
     weight: ["400", "500", "600", "700", "800"],
+    style: ["normal", "italic"],
 });
 
 const jakarta = Plus_Jakarta_Sans({
@@ -67,7 +68,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="pt" className="scroll-smooth">
-            <body className={`${playfair.variable} ${jakarta.variable} antialiased`}>
+            <body suppressHydrationWarning className={`${playfair.variable} ${jakarta.variable} antialiased`}>
                 <SmoothScroll>{children}</SmoothScroll>
                 <FloatingWhatsApp />
             </body>

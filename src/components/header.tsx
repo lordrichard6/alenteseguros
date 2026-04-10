@@ -10,10 +10,12 @@ import Image from "next/image";
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 const navLinks = [
-    { href: "#inicio",   label: "Início",   sectionId: "inicio"   },
-    { href: "#servicos", label: "Serviços", sectionId: "servicos" },
-    { href: "#sobre",    label: "Sobre",    sectionId: "sobre"    },
-    { href: "/contacto", label: "Contacto", sectionId: null        },
+    { href: "/#inicio",        label: "Início",        sectionId: "inicio"        },
+    { href: "/#servicos",      label: "Serviços",      sectionId: "servicos"      },
+    { href: "/#como-funciona", label: "Como Funciona", sectionId: "como-funciona" },
+    { href: "/#sobre",         label: "Sobre",         sectionId: "sobre"         },
+    { href: "/contacto",       label: "Contacto",      sectionId: null            },
+    { href: "/faq",            label: "FAQ",           sectionId: null            },
 ];
 
 export function Header() {
@@ -38,7 +40,7 @@ export function Header() {
     // ── Active section via IntersectionObserver ─────────────────────
     useEffect(() => {
         if (!isHomePage) return;
-        const ids = ["inicio", "servicos", "sobre"];
+        const ids = ["inicio", "servicos", "como-funciona", "sobre", "testemunhos", "parceiros"];
         const observers: IntersectionObserver[] = [];
         ids.forEach((id) => {
             const el = document.getElementById(id);
@@ -71,6 +73,7 @@ export function Header() {
     // ── Active link helper ──────────────────────────────────────────
     const isActive = (link: (typeof navLinks)[0]) => {
         if (link.href === "/contacto") return pathname === "/contacto";
+        if (link.href === "/faq")      return pathname === "/faq";
         return isHomePage && activeSection === link.sectionId;
     };
 
@@ -119,13 +122,13 @@ export function Header() {
 
                         {/* ── Desktop navigation ─────────────────────────── */}
                         <nav
-                            className="hidden md:flex items-center gap-10"
+                            className="hidden md:flex items-center gap-8 lg:gap-10"
                             aria-label="Navegação principal"
                         >
                             {navLinks.map((link) => {
                                 const active = isActive(link);
                                 return (
-                                    <a
+                                    <Link
                                         key={link.href}
                                         href={link.href}
                                         aria-current={active ? "page" : undefined}
@@ -148,7 +151,7 @@ export function Header() {
                                                 active ? "w-full" : "w-0 group-hover:w-full",
                                             ].join(" ")}
                                         />
-                                    </a>
+                                    </Link>
                                 );
                             })}
                         </nav>
@@ -177,11 +180,11 @@ export function Header() {
                                 ].join(" ")}
                             />
 
-                            {/* Conversion CTA — lg+ only to avoid crowding on md */}
+                            {/* Conversion CTA — visible from md up */}
                             <Link
                                 href="/contacto"
                                 className={[
-                                    "hidden lg:flex items-center text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300",
+                                    "hidden md:flex items-center text-sm font-semibold px-4 py-2 rounded-full transition-all duration-300",
                                     isTransparent
                                         ? "bg-white text-primary hover:bg-white/90"
                                         : "bg-primary text-white hover:bg-primary/90",
@@ -282,18 +285,21 @@ export function Header() {
                             aria-label="Menu principal"
                         >
                             {navLinks.map((link, i) => (
-                                <motion.a
+                                <motion.div
                                     key={link.href}
-                                    href={link.href}
-                                    onClick={() => setIsOpen(false)}
-                                    aria-current={isActive(link) ? "page" : undefined}
                                     initial={{ opacity: 0, x: 32 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.35, delay: 0.16 + i * 0.07, ease: EASE }}
-                                    className="font-display text-[2.75rem] font-bold text-white/80 hover:text-white py-3 border-b border-white/10 last:border-0 transition-colors duration-200 leading-tight"
                                 >
-                                    {link.label}
-                                </motion.a>
+                                    <Link
+                                        href={link.href}
+                                        onClick={() => setIsOpen(false)}
+                                        aria-current={isActive(link) ? "page" : undefined}
+                                        className="block font-display text-[2.25rem] font-bold text-white/80 hover:text-white py-2.5 border-b border-white/10 last:border-0 transition-colors duration-200 leading-tight"
+                                    >
+                                        {link.label}
+                                    </Link>
+                                </motion.div>
                             ))}
                         </nav>
 
