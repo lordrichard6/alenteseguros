@@ -26,14 +26,21 @@ export function Hero() {
             id="inicio"
             className="relative min-h-screen flex items-center pt-20 overflow-hidden"
         >
-            {/* White base */}
-            <div className="absolute inset-0 bg-white" />
+            {/* ── Video background ─────────────────────────── */}
+            <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 w-full h-full object-cover"
+                src="/hero.mp4"
+            />
 
-            {/* Right teal surface — desktop only */}
-            <div className="absolute right-0 top-0 bottom-0 w-0 lg:w-[48%] bg-surface" />
+            {/* ── Gradient overlay — darker left, lighter right ── */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/55 to-black/35" />
 
-            {/* Subtle decorative orb — top right */}
-            <div className="absolute top-1/4 right-[10%] w-80 h-80 bg-primary/6 rounded-full filter blur-3xl pointer-events-none" />
+            {/* ── Subtle teal tint on top ───────────────────── */}
+            <div className="absolute inset-0 bg-teal-900/20" />
 
             <div className="container mx-auto px-4 relative z-10 py-16 lg:py-0">
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[calc(100vh-5rem)]">
@@ -45,7 +52,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
                             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                             transition={{ duration: 0.6, ease: EASE }}
-                            className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-2 mb-8"
+                            className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white rounded-full px-4 py-2 mb-8 border border-white/20"
                         >
                             <Shield className="w-4 h-4" />
                             <span className="text-sm font-semibold tracking-wide">
@@ -58,11 +65,11 @@ export function Hero() {
                             initial={{ opacity: 0, y: 28, filter: "blur(10px)" }}
                             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                             transition={{ duration: 0.75, delay: 0.1, ease: EASE }}
-                            className="font-display text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold text-foreground leading-[1.1] mb-6"
+                            className="font-display text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] font-bold text-white leading-[1.1] mb-6"
                         >
                             Proteja o que<br />
                             mais valoriza<br />
-                            <span className="text-primary">com confiança.</span>
+                            <span className="text-teal-300">com confiança.</span>
                         </motion.h1>
 
                         {/* Subheadline */}
@@ -70,7 +77,7 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
                             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                             transition={{ duration: 0.65, delay: 0.2, ease: EASE }}
-                            className="text-lg text-muted-foreground mb-10 max-w-md leading-relaxed"
+                            className="text-lg text-white/75 mb-10 max-w-md leading-relaxed"
                         >
                             Mediação de seguros eficiente e confiável, com atendimento personalizado
                             para cada família e empresa no Alentejo.
@@ -86,7 +93,7 @@ export function Hero() {
                             <Button
                                 asChild
                                 size="lg"
-                                className="font-semibold shadow-lg shadow-primary/20 h-13 px-8 text-base"
+                                className="bg-white text-primary hover:bg-white/90 font-semibold h-12 px-8 text-base shadow-xl shadow-black/20"
                             >
                                 <a href="/contacto" className="gap-2">
                                     Peça um Orçamento
@@ -97,7 +104,7 @@ export function Hero() {
                                 asChild
                                 size="lg"
                                 variant="outline"
-                                className="border-border/70 h-13 px-8 text-base font-semibold hover:bg-muted/50"
+                                className="border-white/40 text-white hover:bg-white/10 hover:border-white/60 bg-transparent h-12 px-8 text-base font-semibold backdrop-blur-sm"
                             >
                                 <a href="#servicos">Os Nossos Serviços</a>
                             </Button>
@@ -113,9 +120,9 @@ export function Hero() {
                             {trustSignals.map((signal) => (
                                 <div
                                     key={signal.label}
-                                    className="flex items-center gap-2 text-sm text-muted-foreground"
+                                    className="flex items-center gap-2 text-sm text-white/65"
                                 >
-                                    <signal.icon className="w-4 h-4 text-primary shrink-0" />
+                                    <signal.icon className="w-4 h-4 text-teal-300 shrink-0" />
                                     <span>{signal.label}</span>
                                 </div>
                             ))}
@@ -126,8 +133,8 @@ export function Hero() {
                     <div className="order-1 lg:order-2 flex justify-center lg:justify-center">
                         <div className="relative w-full max-w-[360px]">
                             {/* Layered shadow backgrounds */}
-                            <div className="absolute -top-3 -right-3 w-full h-full bg-primary/12 rounded-3xl" />
-                            <div className="absolute -top-6 -right-6 w-full h-full bg-primary/6 rounded-3xl" />
+                            <div className="absolute -top-3 -right-3 w-full h-full bg-white/8 rounded-3xl backdrop-blur-sm" />
+                            <div className="absolute -top-6 -right-6 w-full h-full bg-white/4 rounded-3xl" />
 
                             {/* Card */}
                             <motion.div
@@ -138,7 +145,7 @@ export function Hero() {
                                 <motion.div
                                     animate={{ y: [0, -9, 0] }}
                                     transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-                                    className="relative bg-gradient-to-br from-teal-800 via-primary to-teal-500 rounded-3xl p-7 shadow-2xl shadow-primary/25"
+                                    className="relative bg-gradient-to-br from-teal-800 via-primary to-teal-500 rounded-3xl p-7 shadow-2xl shadow-black/40 backdrop-blur-sm"
                                 >
                                     {/* Logo */}
                                     <div className="mb-7">
