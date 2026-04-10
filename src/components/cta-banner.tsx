@@ -49,7 +49,7 @@ export function CtaBanner() {
                             size="lg"
                             className="bg-white text-primary hover:bg-white/92 font-semibold h-12 px-8 text-base shadow-xl shadow-black/15"
                         >
-                            <a href="#contacto" className="gap-2">
+                            <a href="/contacto" className="gap-2">
                                 Peça um Orçamento
                                 <ArrowRight className="w-4 h-4" />
                             </a>

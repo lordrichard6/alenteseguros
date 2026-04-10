@@ -137,7 +137,7 @@ export function Faq() {
                             Esclarecemos as dúvidas mais comuns sobre mediação de seguros.
                             Não encontra a sua resposta?{" "}
                             <a
-                                href="#contacto"
+                                href="/contacto"
                                 className="text-primary font-semibold hover:underline underline-offset-4"
                             >
                                 Contacte-nos.

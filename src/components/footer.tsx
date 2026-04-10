@@ -48,7 +48,7 @@ export function Footer() {
                                 { href: "#inicio", label: "Início" },
                                 { href: "#servicos", label: "Serviços" },
                                 { href: "#sobre", label: "Sobre Nós" },
-                                { href: "#contacto", label: "Contacto" },
+                                { href: "/contacto", label: "Contacto" },
                             ].map((link) => (
                                 <a
                                     key={link.href}

@@ -88,7 +88,7 @@ export function Hero() {
                                 size="lg"
                                 className="font-semibold shadow-lg shadow-primary/20 h-13 px-8 text-base"
                             >
-                                <a href="#contacto" className="gap-2">
+                                <a href="/contacto" className="gap-2">
                                     Peça um Orçamento
                                     <ArrowRight className="w-4 h-4" />
                                 </a>
