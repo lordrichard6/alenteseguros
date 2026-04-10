@@ -24,7 +24,7 @@ export function Hero() {
     return (
         <section
             id="inicio"
-            className="relative min-h-screen flex items-center pt-20 overflow-hidden"
+            className="relative min-h-screen flex items-center pt-20 md:pt-24 overflow-hidden"
         >
             {/* ── Video background ─────────────────────────── */}
             <video
