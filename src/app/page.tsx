@@ -1,4 +1,17 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/header";
+
+export const metadata: Metadata = {
+    title: "AlenteSeguros | Mediação de Seguros em Gavião",
+    description:
+        "Mediação de seguros eficiente e confiável no Alentejo. Seguros de habitação, automóvel, saúde e vida. Atendimento personalizado em Gavião, Portugal.",
+    alternates: { canonical: "/" },
+    openGraph: {
+        title: "AlenteSeguros | Mediação de Seguros em Gavião",
+        description: "Mediação de seguros eficiente e confiável no Alentejo. Atendimento personalizado em Gavião.",
+        url: "/",
+    },
+};
 import { Hero } from "@/components/hero";
 import { StatsBar } from "@/components/stats-bar";
 import { Services } from "@/components/services";

@@ -31,20 +31,20 @@ const contactInfo = [
     {
         icon:  Phone,
         title: "Telefones",
-        value: "241 095 100 | 938 121 196",
-        href:  "tel:+351938121196",
+        value: "241 000 100 | 930 000 196",
+        href:  "tel:+351930000196",
     },
     {
         icon:  Mail,
         title: "Email",
-        value: "seguros.ritareis@gmail.com",
-        href:  "mailto:seguros.ritareis@gmail.com",
+        value: "geral@alenteseguros.pt",
+        href:  "mailto:geral@alenteseguros.pt",
     },
     {
         icon:  MapPin,
         title: "Morada",
-        value: "R. Doutor Eusébio Leão, Nº89 R/C, 6040-120 Gavião",
-        href:  "https://maps.google.com/?q=R.+Doutor+Eusébio+Leão+89+Gavião+Portugal",
+        value: "R. Dr. Eusébio Leão, Nº10, 6040-000 Gavião",
+        href:  "https://maps.google.com/?q=Gavião+Portugal",
     },
 ];
 
@@ -435,6 +435,22 @@ export function Contact() {
                                                                 >
                                                                     Política de Privacidade
                                                                 </Link>
+                                                            </span>
+                                                        </div>
+
+                                                        <div className="flex items-start gap-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+                                                            <span className="shrink-0 mt-px">⚠️</span>
+                                                            <span>
+                                                                <strong>Projeto de demonstração</strong> — Este formulário não processa nem armazena dados reais. Website criado pela{" "}
+                                                                <a
+                                                                    href="https://lopes2tech.ch"
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    className="font-semibold underline underline-offset-2 hover:text-amber-900 transition-colors"
+                                                                >
+                                                                    Lopes2Tech
+                                                                </a>
+                                                                {" "}para fins de portfólio.
                                                             </span>
                                                         </div>
                                                     </motion.div>

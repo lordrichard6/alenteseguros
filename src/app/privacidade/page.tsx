@@ -1,5 +1,20 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import ShowcaseDisclaimer from "@/components/ShowcaseDisclaimer";
+
+export const metadata: Metadata = {
+    title: "Política de Privacidade",
+    description:
+        "Política de privacidade e proteção de dados da AlenteSeguros. Saiba como recolhemos, utilizamos e protegemos os seus dados pessoais em conformidade com o RGPD.",
+    alternates: { canonical: "/privacidade" },
+    robots: { index: true, follow: false },
+    openGraph: {
+        title: "Política de Privacidade | AlenteSeguros",
+        description: "Política de privacidade e proteção de dados da AlenteSeguros, em conformidade com o RGPD.",
+        url: "/privacidade",
+    },
+};
 
 export default function PrivacidadePage() {
     return (
@@ -7,7 +22,8 @@ export default function PrivacidadePage() {
             <Header />
             <main className="flex-1 container mx-auto px-4 py-24 md:py-32">
                 <div className="max-w-3xl mx-auto space-y-8">
-                    <h1 className="text-3xl md:text-4xl font-bold mb-8">Política de Privacidade</h1>
+                    <ShowcaseDisclaimer />
+                <h1 className="text-3xl md:text-4xl font-bold mb-8">Política de Privacidade</h1>
 
                     <div className="prose prose-zinc dark:prose-invert max-w-none space-y-6 text-muted-foreground">
                         <p className="text-lg text-foreground">
@@ -20,7 +36,7 @@ export default function PrivacidadePage() {
                             <p>
                                 A entidade responsável pelo tratamento dos seus dados é a <strong>AlenteSeguros - Mediação de Seguros, Lda.</strong>.
                                 Qualquer questão relacionada com a proteção de dados deve ser endereçada para:
-                                <a href="mailto:seguros.ritareis@gmail.com" className="text-primary hover:underline ml-1">seguros.ritareis@gmail.com</a>.
+                                <a href="mailto:geral@alenteseguros.pt" className="text-primary hover:underline ml-1">geral@alenteseguros.pt</a>.
                             </p>
                         </section>
 

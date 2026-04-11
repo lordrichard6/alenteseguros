@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-
-Disallow: /portal/
-
-Sitemap: https://alenteseguros.pt/sitemap.xml

@@ -1,5 +1,20 @@
+import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import ShowcaseDisclaimer from "@/components/ShowcaseDisclaimer";
+
+export const metadata: Metadata = {
+    title: "Termos e Condições",
+    description:
+        "Termos e condições de utilização do website AlenteSeguros. Informação sobre os serviços de mediação de seguros, propriedade intelectual e lei aplicável.",
+    alternates: { canonical: "/termos" },
+    robots: { index: true, follow: false },
+    openGraph: {
+        title: "Termos e Condições | AlenteSeguros",
+        description: "Termos e condições de utilização do website AlenteSeguros.",
+        url: "/termos",
+    },
+};
 
 export default function TermosPage() {
     return (
@@ -7,14 +22,15 @@ export default function TermosPage() {
             <Header />
             <main className="flex-1 container mx-auto px-4 py-24 md:py-32">
                 <div className="max-w-3xl mx-auto space-y-8">
-                    <h1 className="text-3xl md:text-4xl font-bold mb-8">Termos e Condições</h1>
+                    <ShowcaseDisclaimer />
+                <h1 className="text-3xl md:text-4xl font-bold mb-8">Termos e Condições</h1>
 
                     <div className="prose prose-zinc dark:prose-invert max-w-none space-y-6 text-muted-foreground">
                         <section>
                             <h2 className="text-xl font-semibold text-foreground mb-4">1. Identificação da Entidade</h2>
                             <p>
                                 O presente website é propriedade da <strong>AlenteSeguros - Mediação de Seguros, Lda.</strong>,
-                                com sede na R. Doutor Eusébio Leão, Nº89 R/C, 6040-120 Gavião, Portugal.
+                                com sede na R. Dr. Eusébio Leão, Nº10, 6040-000 Gavião, Portugal.
                             </p>
                         </section>
 
@@ -64,7 +80,7 @@ export default function TermosPage() {
                             <h2 className="text-xl font-semibold text-foreground mb-4">7. Contactos</h2>
                             <p>
                                 Para qualquer esclarecimento sobre estes termos, contacte-nos através do email:
-                                <a href="mailto:seguros.ritareis@gmail.com" className="text-primary hover:underline ml-1">seguros.ritareis@gmail.com</a>.
+                                <a href="mailto:geral@alenteseguros.pt" className="text-primary hover:underline ml-1">geral@alenteseguros.pt</a>.
                             </p>
                         </section>
                     </div>

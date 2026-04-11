@@ -346,6 +346,24 @@ export function PortalLogin() {
                         </Link>
                         .
                     </motion.p>
+
+                    <motion.div
+                        className="mt-4 flex items-start gap-2 text-xs bg-amber-50 border border-amber-200 rounded-xl px-3 py-2.5 text-amber-700"
+                        {...fieldMotion(0.4)}
+                    >
+                        <span className="shrink-0 mt-px">⚠️</span>
+                        <span className="leading-relaxed">
+                            <strong>Projeto de demonstração da{" "}
+                            <a
+                                href="https://lopes2tech.ch"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="underline underline-offset-2 hover:text-amber-900 transition-colors"
+                            >
+                                Lopes2Tech
+                            </a></strong> — Introduza qualquer email e palavra-passe para explorar o portal. Nenhum dado é armazenado ou processado.
+                        </span>
+                    </motion.div>
                 </div>
             </div>
 
